@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Nails Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation - Prada inspired */
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu li a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            opacity: 0.7;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icons a {
+            color: #000000;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 70vh;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f8f8f8" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: 2px solid #000000;
+            background-color: transparent;
+            color: #000000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #000000;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            color: #000000;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 40px 20px;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item h3 {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .service-item p {
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: #f8f8f8;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .about-text p {
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            height: 400px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999999;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: #ffffff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .contact-info p {
+            color: #666666;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            color: #000000;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #000000;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #cccccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 30px;
+            color: #999999;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">LUXE NAILS</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="#search">🔍</a>
+                <a href="#account">👤</a>
+                <a href="#cart">🛍️</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Luxury Nail Artistry</h1>
+            <p>Experience the finest in nail care and design. Where elegance meets precision, and beauty becomes art.</p>
+            <div class="cta-buttons">
+                <a href="#booking" class="btn btn-primary">Book Appointment</a>
+                <a href="#services" class="btn">View Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Classic Manicure</h3>
+                    <p>Traditional nail care with cuticle treatment, shaping, and polish application using premium products.</p>
+                    <div class="service-price">From $45</div>
+                </div>
+                <div class="service-item">
+                    <h3>Gel Extensions</h3>
+                    <p>Long-lasting gel nail extensions with custom length and shape, perfect for special occasions.</p>
+                    <div class="service-price">From $85</div>
+                </div>
+                <div class="service-item">
+                    <h3>Nail Art Design</h3>
+                    <p>Bespoke nail art created by our skilled artists, from minimalist elegance to intricate patterns.</p>
+                    <div class="service-price">From $65</div>
+                </div>
+                <div class="service-item">
+                    <h3>Luxury Pedicure</h3>
+                    <p>Complete foot care experience with exfoliation, massage, and premium polish application.</p>
+                    <div class="service-price">From $55</div>
+                </div>
+                <div class="service-item">
+                    <h3>Bridal Package</h3>
+                    <p>Complete bridal nail service including trial session, wedding day application, and touch-up kit.</p>
+                    <div class="service-price">From $150</div>
+                </div>
+                <div class="service-item">
+                    <h3>Express Service</h3>
+                    <p>Quick and efficient nail care for busy schedules, maintaining quality in minimal time.</p>
+                    <div class="service-price">From $35</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Crafting Beauty Since 2020</h2>
+                    <p>At Luxe Nails Studio, we believe that nail care is an art form. Our team of certified nail technicians combines traditional techniques with modern innovation to deliver exceptional results.</p>
+                    <p>We use only the finest products and maintain the highest standards of hygiene and safety. Every client receives personalized attention in our serene, luxury environment.</p>
+                    <p>Our commitment to excellence has made us the preferred choice for discerning clients who appreciate quality, artistry, and impeccable service.</p>
+                </div>
+                <div class="about-image">
+                    [Elegant salon interior image would go here]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Visit Our Studio</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Location & Hours</h3>
+                    <p><strong>Address:</strong><br>
+                    123 Luxury Lane<br>
+                    Beverly Hills, CA 90210</p>
+                    
+                    <p><strong>Phone:</strong><br>
+                    (555) 123-LUXE</p>
+                    
+                    <p><strong>Email:</strong><br>
+                    hello@luxenailsstudio.com</p>
+                    
+                    <p><strong>Hours:</strong><br>
+                    Monday - Friday: 9:00 AM - 7:00 PM<br>
+                    Saturday: 9:00 AM - 6:00 PM<br>
+                    Sunday: 10:00 AM - 5:00 PM</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Preferred Service</label>
+                            <input type="text" id="service" name="service">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your nail goals..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p><a href="#services">Manicures</a></p>
+                    <p><a href="#services">Pedicures</a></p>
+                    <p><a href="#services">Nail Art</a></p>
+                    <p><a href="#services">Extensions</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p><a href="#about">Our Story</a></p>
+                    <p><a href="#team">Our Team</a></p>
+                    <p><a href="#careers">Careers</a></p>
+                    <p><a href="#press">Press</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p><a href="#instagram">Instagram</a></p>
+                    <p><a href="#facebook">Facebook</a></p>
+                    <p><a href="#pinterest">Pinterest</a></p>
+                    <p><a href="#newsletter">Newsletter</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luxe Nails Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
